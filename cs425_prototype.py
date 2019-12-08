@@ -1,10 +1,11 @@
-import cv2
+# import cv2
 import os
 import re
 import numpy as np
 
-
+# Pass in input director file path from working directory
 def load_data(input_dir):
+    # return all file names in folder
     folder = os.fsencode(input_dir)
     return [os.fsdecode(file) for file in os.listdir(folder)]
 
