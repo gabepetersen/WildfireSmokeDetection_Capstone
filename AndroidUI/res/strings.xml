@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WildFireSmokeDetection</string>
+    <string name="app_name_spaces">Wild Fire Smoke Detector</string>
+    <string name="create_account"><u>Create Account</u></string>
+    <string name="forgot_user_pass"><u>Forgot Username/Password</u></string>
+    <string name="take_pic_vid">Take Picture/Video</string>
+    <string name="upload_pic_vid">Upload Picture/Video</string>
+    <string name="view_report">View Last Report</string>
+    <string name="menu">Menu</string>
+    <string name="test">Test</string>
+</resources>
