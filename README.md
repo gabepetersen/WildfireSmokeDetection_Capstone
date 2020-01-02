@@ -29,6 +29,18 @@ William Williams
 
 - train network
 
+# Main Considerations
+
+- How do we remove frames that will negatively affect our models performance in preprocessing?
+
+- What features can we extract from smoke?
+
+- How can we label our frame-by-frame data effectively and efficiently?
+
+- What convolutions can we create for our model?
+
+- How do we accomplish time-based detection?
+
 # Ideas for Design
 
 # Ideas for Engineering
