@@ -17,6 +17,9 @@ William Williams
 - Preprocess videos and put on database
 
 - Design program to, frame-by-frame, identify and label regions containing smoke based on computer vision techniques (optical flow, image segmentation, etc...)
+  - option 1: use optical flow to identify where the main motion is in the image (hopefully only smoke since blurry and camera shake frames are already thrown out).
+  - option 2: use image color intensity to determine what portions of the image are the most greyish and out of place (probably wont work for night time photos)
+  - option 3: try to segment out background by other factors (blurriness, noiseyness, etc...)
 
 - Design program to verify with user if the previous program identified the regions correctly (no false positives or negatives for each region)
 
