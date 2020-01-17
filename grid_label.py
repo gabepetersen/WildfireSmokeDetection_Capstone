@@ -13,8 +13,6 @@ import numpy as np
 
 # declare a 2d array and initialize all entries to 0
 smoke_regions = [[0 for x in range(9)] for y in range(16)]
-# global redraw condition
-cond_redraw = True
 
 # reads in a video using opencv's VideoCapture object
 def read_video(filename):
@@ -49,16 +47,13 @@ def click_box(event, x, y, flags, param):
         # see what box in the data structure
         gridX = int(x / 120)
         gridY = int(y / 120)
-        print("Here is the coordinates you chose yo!  " + str(gridX) + ", " + str(gridY))
+        #print("Here is the coordinates you chose yo!  " + str(gridX) + ", " + str(gridY))
 
         # change between 0 and 255 depending on previous state
         if(smoke_regions[gridX][gridY] == 0):
             smoke_regions[gridX][gridY] = 255
         else:
             smoke_regions[gridX][gridY] = 0
-
-        # set redraw bool to true
-        cond_redraw = True
 
 # main function responsible for displaying frames and saving user inputted data
 def grid_label(dataInputPath, videoCount):
@@ -67,7 +62,8 @@ def grid_label(dataInputPath, videoCount):
     # create a video writer for smoke_regions
     dataPath = 'GridDataResults/' + str(videoCount) + '.mov'
     fourcc = cv2.VideoWriter_fourcc('m','p','4','v')
-    videoWrite = cv2.VideoWriter(dataPath, fourcc, 10, (16, 9) )
+    videoWrite = cv2.VideoWriter(dataPath, fourcc, 10, (16, 9), False)
+
     # start the frame sequence
     frame_sequence(video, videoWrite)
 
@@ -97,7 +93,7 @@ def frame_sequence(video, videoWrite):
             key = cv2.waitKey(1) & 0xFF
 
             frame_copy = curr_frame.copy()
-            # go thru the smoke_regions and draw rectangles on the frame copy
+            # go thru the smoke_regions and redraw smoke_regions from previous frame
             for x in range(0, 16):
                 for y in range(0, 9):
                     if smoke_regions[x][y] == 255:
@@ -106,11 +102,15 @@ def frame_sequence(video, videoWrite):
                         frame_copy = cv2.rectangle(frame_copy, (xcord, ycord), (xcord+120, ycord+120), (0,255,0), 2)
 
             if key == ord("n"):
-                print("next frame")
                 # write the current data structure to the output video
                 region_data = np.uint8(smoke_regions)
+                # rotate and flip bc my code sucks haha
+                region_data = cv2.flip(region_data, 1)
+                region_data = cv2.rotate(region_data, cv2.ROTATE_90_COUNTERCLOCKWISE)
+                # resize for video sanity check
+                region_data = cv2.resize(region_data, (16, 9))
+                # write frame to movie
                 videoWrite.write(region_data)
-                print("region data: ", region_data)
                 break
             if key == ord("q"):
                 # exit the program
