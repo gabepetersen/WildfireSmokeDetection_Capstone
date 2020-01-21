@@ -74,6 +74,8 @@ def grid_label(dataInputPath, videoCount):
 
 # goes thru video sequence and displays frames
 def frame_sequence(video, videoWrite):
+    # declare boolean pause/play condition
+    vidPlay = False
     # go through each of the frames
     frame_count = 0
     done = False
@@ -85,7 +87,6 @@ def frame_sequence(video, videoWrite):
         # set event handler for mouseclick
         cv2.namedWindow("Current Frame")
         cv2.setMouseCallback("Current Frame", click_box)
-
         # displays the image and waits for clicks, next frame, or quit
         while True:
             # display the image
@@ -120,10 +121,19 @@ def frame_sequence(video, videoWrite):
                 for x in range(0, 16):
                     for y in range(0, 9):
                         smoke_regions[x][y] = 0
+            # pause/play functionality
+            if key == ord("p"):
+                if vidPlay:
+                    vidPlay = False
+                else:
+                    vidPlay = True
             # quit the program function
             if key == ord("q"):
                 # exit the program
                 done = True
+                break
+            # break loop if vidPlay is True
+            if vidPlay:
                 break
 
 if __name__ == "__main__":
