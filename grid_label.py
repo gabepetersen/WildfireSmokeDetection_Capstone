@@ -92,8 +92,9 @@ def frame_sequence(video, videoWrite):
             cv2.imshow("Current Frame", frame_copy)
             key = cv2.waitKey(1) & 0xFF
 
+            # make copy of current frame
             frame_copy = curr_frame.copy()
-            # go thru the smoke_regions and redraw smoke_regions from previous frame
+            # go thru the smoke_regions and redraw smoke_regions onto copy
             for x in range(0, 16):
                 for y in range(0, 9):
                     if smoke_regions[x][y] == 255:
@@ -101,17 +102,25 @@ def frame_sequence(video, videoWrite):
                         ycord = y * 120
                         frame_copy = cv2.rectangle(frame_copy, (xcord, ycord), (xcord+120, ycord+120), (0,255,0), 2)
 
+            # next frame function
             if key == ord("n"):
                 # write the current data structure to the output video
                 region_data = np.uint8(smoke_regions)
-                # rotate and flip bc my code sucks haha
+                # rotate and flip 2d array bc I dont want to redo the code because I am lazy ok
                 region_data = cv2.flip(region_data, 1)
                 region_data = cv2.rotate(region_data, cv2.ROTATE_90_COUNTERCLOCKWISE)
-                # resize for video sanity check
+                # resize for video compatibility sanity check
                 region_data = cv2.resize(region_data, (16, 9))
                 # write frame to movie
                 videoWrite.write(region_data)
                 break
+            # clear the squares function
+            if key == ord("c"):
+                frame_copy = curr_frame.copy()
+                for x in range(0, 16):
+                    for y in range(0, 9):
+                        smoke_regions[x][y] = 0
+            # quit the program function
             if key == ord("q"):
                 # exit the program
                 done = True
