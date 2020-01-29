@@ -1,9 +1,11 @@
 # grid_label.py
 # Gabe Petersen
-# 13 Jan 2020
-# To go thru a frame of a video and label each section as having smoke or not
+# 21 Jan 2020
+# version 1.5
+# Go thru a frame-by-frame of a video and label regions of the frame as having smoke or not
 
-# for a image of 480x270, 16 boxes in width and 9 in height will result in grid squares of 30 pixels each
+# for an image of 480x270, 16 boxes in width and 9 in height will result in grid squares of 30x30 pixels
+# for an image of 1920x1080, 16 boxes in width and 9 in height will result in grid squares of 120x120 pixels
 
 import cv2
 import keyboard
@@ -149,6 +151,8 @@ if __name__ == "__main__":
     # start grid label sequence
     print("Instructions:")
     print("   - while on the image feed, click to select and unselect sections of smoke")
-    print("   - after selection is made, hit n to write to file and go to next frame")
-    print("   - hit q any time to quit while on the video")
+    print("   - c - clear selection of squares")
+    print("   - n - write to file frame by frame")
+    print("   - p - write to file continuously until p is presssed again to 'pause'")
+    print("   - q - any time to quit while on the video")
     grid_label(dataInputPath, videoCount)
