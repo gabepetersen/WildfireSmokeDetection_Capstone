@@ -4,6 +4,7 @@ Application: FrameExtractor
 Author(s): William Williams
 Version:
 	- 1.0 : Complete Program January 30, 2020
+	- 1.1 : Added Parallel Computing for the main loop, February 2, 2020
 Purpose:
 	- Extract a set number of frames from each video in a folder
 		and save those frames as a new video in a seperate folder.
@@ -18,6 +19,7 @@ Purpose:
 #include <functional>		// Used for hash function
 #include <windows.h>		// Change directory functionality
 #include <fstream>			// Input/Output file functionality
+#include <omp.h>			// For parallel programming
 
 using namespace cv;
 namespace fs = std::filesystem;
@@ -85,7 +87,8 @@ int main(int argv, char* argc)
 	LPCWSTR videoDirectoryLPCWSTR = videoDirectory.c_str();
 	SetCurrentDirectoryW(videoDirectoryLPCWSTR);
 
-	// Loop through all of the videos.
+	// Loop through all of the videos using parallel computing
+	#pragma omp parallel for
 	for (int i = 0; i < videoFileNames.size(); i++)
 	{
 		// Get number of frames from metadata.
@@ -293,7 +296,7 @@ void selectFrames(int numFramesSelect, long totalNumFrames, const std::string or
 	// Video code
 	// Frames per second
 	// Frame Size
-	VideoWriter outputVideo(newFileName, VideoWriter::fourcc('M', 'J', 'P', 'G'), 1, Size(frame_width, frame_height));
+	VideoWriter outputVideo(newFileName, VideoWriter::fourcc('M', 'J', 'P', 'G'), 1, Size2i(frame_width, frame_height));
 	
 	// Calculate number of frames in each section.
 	long frameInterval = totalNumFrames / (numFramesSelect + 1);
