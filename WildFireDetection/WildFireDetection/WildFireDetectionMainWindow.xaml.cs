@@ -1,0 +1,83 @@
+﻿using System;
+using System.Diagnostics;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using Microsoft.Win32;
+
+namespace WildFireDetection
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    { 
+        public string _testVideoPath = "";
+        public string testVideoName = "";
+
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void SelectDataMenu_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileSystem = new OpenFileDialog();
+            openFileSystem.Multiselect = false;
+            openFileSystem.InitialDirectory = @"C:\";
+            openFileSystem.Filter = "Video Files (*.jpeg;*.mov;*.avi;*.mp4)|*.jpeg;*.mov;*.avi;*.mp4|All Files (*.*)|*.*";
+            openFileSystem.Tag = "Video";
+            openFileSystem.Title = "Select Video For Testing";
+
+            Nullable<bool> fileSelected = openFileSystem.ShowDialog();
+
+            if(fileSelected == true)
+            {
+                _testVideoPath = openFileSystem.FileName;
+                Uri videoPath = new Uri(_testVideoPath);
+                previewVideo.Source = videoPath;
+            }
+        }
+
+        private void SelectBeginTest_Click(object sender, RoutedEventArgs e)
+        {
+            if(_testVideoPath != "")
+            {
+                TestingWindow openTestProgress = new TestingWindow();
+                openTestProgress.ShowDialog();
+            }
+        }
+
+        public void addListItem(TextBlock newItem)
+        {
+            ListBoxItem newListItem = new ListBoxItem();
+            newListItem.Content = newItem;
+            newListItem.AddHandler(ListBoxItem.SelectedEvent, new RoutedEventHandler(openReportFile));
+            reportList.Items.Add(newListItem);
+        }
+
+        private void openReportFile(object sender, RoutedEventArgs e)
+        {
+            ListBoxItem reportListItem = e.Source as ListBoxItem;
+
+            reportListItem.IsSelected = false;
+
+            TextBlock listItem = reportListItem.Content as TextBlock;
+
+            string openFile = Directory.GetCurrentDirectory() + "\\" + listItem.Text;
+
+            MessageBox.Show(openFile);
+        }
+    }
+}
