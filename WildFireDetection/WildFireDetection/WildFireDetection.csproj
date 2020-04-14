@@ -6,4 +6,11 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="ActiveReports\**" />
+    <EmbeddedResource Remove="ActiveReports\**" />
+    <None Remove="ActiveReports\**" />
+    <Page Remove="ActiveReports\**" />
+  </ItemGroup>
+
 </Project>

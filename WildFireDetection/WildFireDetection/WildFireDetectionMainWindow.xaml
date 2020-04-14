@@ -54,27 +54,6 @@
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="2 0 0 0">
                     <ListBox x:Name="reportList" Background="Beige">
-                        <ListBoxItem>
-                            <TextBlock Margin="5 5 5 0" FontSize="14">
-                                SampleReport0.txt
-                            </TextBlock>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <TextBlock Margin="5 5 5 0" FontSize="14">
-                                SampleReport1.txt
-                            </TextBlock>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <TextBlock Margin="5 5 5 0" FontSize="14">
-                                SampleReport2.txt
-                            </TextBlock>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <TextBlock Margin="5 5 5 0" FontSize="14">
-                                SampleReport3.txt
-                            </TextBlock>
-                        </ListBoxItem>
-
                     </ListBox>
                 </Border>
             </DockPanel>

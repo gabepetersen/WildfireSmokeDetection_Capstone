@@ -17,3 +17,7 @@ C:\Users\1955w\Desktop\WildFireDetection\WildFireDetection\obj\Debug\netcoreapp3
 C:\Users\1955w\Desktop\WildFireDetection\WildFireDetection\obj\Debug\netcoreapp3.1\WildFireDetection.pdb
 C:\Users\1955w\Desktop\WildFireDetection\WildFireDetection\obj\Debug\netcoreapp3.1\TestingWindow.g.cs
 C:\Users\1955w\Desktop\WildFireDetection\WildFireDetection\obj\Debug\netcoreapp3.1\TestingWindow.baml
+C:\Users\1955w\Desktop\WildFireDetection\WildFireDetection\obj\Debug\netcoreapp3.1\OpenReportFile.g.cs
+C:\Users\1955w\Desktop\WildFireDetection\WildFireDetection\obj\Debug\netcoreapp3.1\OpenReportFile.baml
+C:\Users\1955w\Desktop\WildFireDetection\WildFireDetection\obj\Debug\netcoreapp3.1\GetReportName.g.cs
+C:\Users\1955w\Desktop\WildFireDetection\WildFireDetection\obj\Debug\netcoreapp3.1\GetReportName.baml

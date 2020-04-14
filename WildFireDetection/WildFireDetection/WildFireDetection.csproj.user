@@ -7,11 +7,23 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="GetReportName.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="OpenReportFile.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="TestingWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="GetReportName.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="OpenReportFile.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="TestingWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

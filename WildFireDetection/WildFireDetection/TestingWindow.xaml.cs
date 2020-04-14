@@ -14,11 +14,10 @@ using System.Windows.Shapes;
 
 namespace WildFireDetection
 {
-    /// <summary>
-    /// Interaction logic for TestingWindow.xaml
-    /// </summary>
     public partial class TestingWindow : Window
     {
+		public string newReportName;
+
         public TestingWindow()
         {
             InitializeComponent();
@@ -51,26 +50,18 @@ namespace WildFireDetection
 		void workerProgress_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
 			this.Close();
-
-			DateTime reportDate = DateTime.Now;
-			TextBlock newItem = new TextBlock();
-			string dateTime = reportDate.ToString() + ".txt";
-			string reportName = dateTime.Replace(" ", "_");
-			reportName = reportName.Replace(":", "-");
-			reportName = reportName.Replace("/", "-");
-			newItem.Text = reportName;
-			Thickness listMargin = new Thickness(5, 5, 5, 0);
-			newItem.Margin = listMargin;
-			newItem.FontSize = 14;
-
-			MessageBox.Show("Test Ran Succesfully...Report File Created " + reportName);
-
 			MainWindow mainWindow = (MainWindow)System.Windows.Application.Current.MainWindow;
-			mainWindow.addListItem(newItem);
 
-			string currentDirectory = Directory.GetCurrentDirectory();
+			ReportFile newReport = new ReportFile(System.IO.Path.GetFileName(mainWindow._testVideoPath));
 
-			System.IO.File.WriteAllText((currentDirectory + "\\" + reportName), System.IO.Path.GetFullPath(mainWindow._testVideoPath));
+			GetReportName reportNameWindow = new GetReportName(newReport.ReportName);
+			reportNameWindow.ShowDialog();
+
+			newReport.ReportName = reportNameWindow.NewReportName;
+
+			newReport.writeTextFileHeader(System.IO.Path.GetFileName(mainWindow._testVideoPath));
+			mainWindow.addListItem(newReport.ReportName);
+			mainWindow.reportManager.addReport(newReport);
 		}
 
 

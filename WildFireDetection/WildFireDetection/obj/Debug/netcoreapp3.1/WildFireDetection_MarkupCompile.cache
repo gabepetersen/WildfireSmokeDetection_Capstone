@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\1955w\Desktop\WildFireDetection\WildFireDetection\App.xaml
-21416854091
+4-1293623046
 
-4-1181714906
+8-454561042
 1921654412462
-TestingWindow.xaml;WildFireDetectionMainWindow.xaml;
+GetReportName.xaml;OpenReportFile.xaml;TestingWindow.xaml;WildFireDetectionMainWindow.xaml;
 
 False
 

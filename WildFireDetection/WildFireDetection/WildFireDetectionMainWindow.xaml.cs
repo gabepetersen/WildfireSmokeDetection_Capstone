@@ -24,11 +24,13 @@ namespace WildFireDetection
     public partial class MainWindow : Window
     { 
         public string _testVideoPath = "";
-        public string testVideoName = "";
+        public ReportManager reportManager;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            reportManager = new ReportManager();
         }
 
         private void SelectDataMenu_Click(object sender, RoutedEventArgs e)
@@ -59,25 +61,43 @@ namespace WildFireDetection
             }
         }
 
-        public void addListItem(TextBlock newItem)
+        public void addListItem(string newReportName)
         {
+            TextBlock newItem = new TextBlock();
+            newItem.Text = newReportName;
+            Thickness listMargin = new Thickness(5, 5, 5, 0);
+            newItem.Margin = listMargin;
+            newItem.FontSize = 16;
+
             ListBoxItem newListItem = new ListBoxItem();
             newListItem.Content = newItem;
-            newListItem.AddHandler(ListBoxItem.SelectedEvent, new RoutedEventHandler(openReportFile));
+            newListItem.AddHandler(ListBoxItem.MouseDoubleClickEvent, new MouseButtonEventHandler(openReportFile));
+            newListItem.AddHandler(ListBoxItem.KeyDownEvent, new KeyEventHandler(deleteReportFile));
             reportList.Items.Add(newListItem);
         }
 
-        private void openReportFile(object sender, RoutedEventArgs e)
+        private void deleteReportFile(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.D)
+            {
+                ListBoxItem reportListItem = reportList.SelectedItem as ListBoxItem;
+
+                if (reportListItem != null)
+                {
+                    TextBlock listItem = reportListItem.Content as TextBlock;
+
+                    reportManager.deleteReport(listItem.Text);
+                }
+            }
+        }
+
+        private void openReportFile(object sender, MouseButtonEventArgs e)
         {
             ListBoxItem reportListItem = e.Source as ListBoxItem;
 
-            reportListItem.IsSelected = false;
-
             TextBlock listItem = reportListItem.Content as TextBlock;
 
-            string openFile = Directory.GetCurrentDirectory() + "\\" + listItem.Text;
-
-            MessageBox.Show(openFile);
+            reportManager.openReport(listItem.Text);
         }
     }
 }
