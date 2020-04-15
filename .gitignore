@@ -6,3 +6,5 @@ GridDataResults/
 FrameExtractor/
 Capstone_Data/
 __pycache__/
+training/
+validation/

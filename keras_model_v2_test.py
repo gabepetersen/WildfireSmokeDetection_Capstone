@@ -2,6 +2,11 @@
 # 14 Apr 2020
 # Test the model that is trained seperately
 
+##
+##  TO RUN:
+##  python3 keras_model_v2_test.py test_video.mp4
+##
+
 import cv2
 import numpy as np
 import sys

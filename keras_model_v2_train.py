@@ -16,6 +16,22 @@ from keras.optimizers import *
 from keras import backend as K 
 from keras.utils import plot_model
 
+##
+##  TO RUN:
+##  make sure theres directories in this directory as such:
+##
+##  training/
+##    -- NoSmoke/
+##      -- 8000 images of non smoke
+##    -- Smoke/
+##      -- 8000 images of smoke
+##  validation/
+##    -- NoSmoke/
+##      -- 3000 images of non smoke
+##    -- Smoke/
+##      -- 3000 images of smoke
+##
+## (sample sizes can be adjusted in code below)
 
 if __name__ == '__main__':
   # get training and validation set
