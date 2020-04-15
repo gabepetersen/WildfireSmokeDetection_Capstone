@@ -8,9 +8,10 @@ import tflearn
 from tflearn.layers.conv import conv_2d, max_pool_2d
 from tflearn.layers.core import input_data, dropout, fully_connected
 from tflearn.layers.estimator import regression
+import sys
 
-no_smoke = os.listdir('FrameExtractor/ImageSegments/NoSmoke/')
-smoke = os.listdir('FrameExtractor/ImageSegments/SmokeFrames/')
+no_smoke = os.listdir('FrameExtractor/ImageSegments/Train/NoSmoke/')
+smoke = os.listdir('FrameExtractor/ImageSegments/Train/Smoke/')
 random.seed(0)
 
 
@@ -33,7 +34,8 @@ def create_training_data(training_data, path, label, files):
 
 
 # Use tensorflow functions to create a CNN
-# The following links have documentation on the functions used to create the CNN
+# The following links have documentation on the functions used to create the CNN as well as the tutorial used to implement the CNN.
+# https://www.geeksforgeeks.org/image-classifier-using-cnn/
 # http://tflearn.org/layers/conv/
 # http://tflearn.org/layers/core/
 # @params:
@@ -79,10 +81,18 @@ def train_cnn(train, test, model, MODEL_NAME):
     Y = [i[1] for i in train]
     test_x = np.array([i[0] for i in test])  # .reshape(-1, IMG_SIZE, IMG_SIZE, 1)
     test_y = [i[1] for i in test]
-    model.fit({'input': X}, {'targets': Y}, n_epoch=5,
+    model.fit({'input': X}, {'targets': Y}, n_epoch=10,
               validation_set=({'input': test_x}, {'targets': test_y}),
               snapshot_step=5, show_metric=True, run_id=MODEL_NAME)
     model.save(MODEL_NAME)
+
+def create_result_videowriter(dataPath):
+    fc = cv2.VideoWriter_fourcc(*'XVID')
+    frame_width = 1920
+    frame_height = 1080
+    size = (int(frame_width), int(frame_height))
+    resultVideo = cv2.VideoWriter(dataPath, fc, 0.5, size)
+    return resultVideo
 
 
 # iterate through frames of a video and call model.predict on each cell in a 16x9 grid
@@ -92,8 +102,11 @@ def train_cnn(train, test, model, MODEL_NAME):
 # video - test video to run the network on
 # @returns:
 # nothing - displays results of grid calculation on local machine.
-def grid_contour(model, video):
+def grid_contour(model, video, vidName):
     done = False
+    dataPath = "Result_" + vidName
+    resultVideoWriter = create_result_videowriter(dataPath)
+
     while not done:
         ret, curr_frame = video.read()
         if not ret:
@@ -120,9 +133,9 @@ def grid_contour(model, video):
                         frame_copy = cv2.rectangle(frame_copy, start, end, color, 1)
                     else:
                         color = (0, 0, 255)
-                        frame_copy = cv2.rectangle(frame_copy, start, end, color, 2)
+                        frame_copy = cv2.rectangle(frame_copy, start, end, color, 1)
                     cv2.imshow("CurrentFrame", frame_copy)
-
+            resultVideoWriter.write(frame_copy)
 
 if __name__ == '__main__':
     training_data = []
@@ -139,14 +152,18 @@ if __name__ == '__main__':
     data = np.load('train_data.npy', allow_pickle=True)
     train = data[:16000]
     test = data[-3000:]
-    MODEL_NAME = 'test_model_0.00075.tflearn'
+    MODEL_NAME = 'test_model_0.00075_10epochs.tflearn'
     model = create_cnn()
     # call train model here if training a model with new Epoch / LR values
-    # train_cnn(train, test, model, MODEL_NAME)
-    # model.save(MODEL_NAME)
+    train_cnn(train, test, model, MODEL_NAME)
+    model.save(MODEL_NAME)
     # load previous saved model to eliminate need to train new model each execution of the program
-    model.load(MODEL_NAME)
-    path = 'Data/'
-    files = os.listdir(path)
-    video = read_video(path + files[3])
-    grid_contour(model, video)
+    path = sys.argv[1]
+    fileName = sys.argv[2]
+    video = read_video(path + fileName)
+    grid_contour(model, video, fileName)
+    #model.load(MODEL_NAME)
+    #path = 'FrameExtractor/ProcessedVideos/'
+    #files = os.listdir(path)
+    #video = read_video(path + files[86])
+    #grid_contour(model, video, files[86])
