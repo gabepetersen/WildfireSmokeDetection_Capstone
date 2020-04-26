@@ -234,14 +234,15 @@ if __name__ == "__main__":
 
         # read the lines from HashedVideoNames.txt
         videoNameList = videoNames.read().splitlines()
+        print(len(videoNameList))
 
         # ZB EDIT: altering videoCount to process middle 300 videos
-        videoCount = 299
+        videoCount = 50
         files = []
         for i in range(300):
             files.append(videoNameList[videoCount])
             videoCount += 1
-        videoCount = 299
+        videoCount = 50
 
         # label all those videos from the user specified directory
         for vidname in files:

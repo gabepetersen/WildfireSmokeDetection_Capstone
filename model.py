@@ -103,9 +103,16 @@ def create_result_videowriter(dataPath):
 # @returns:
 # nothing - displays results of grid calculation on local machine.
 def grid_contour(model, video, vidName):
+
+    # open data file
+    data_output = open((vidName + '_testdata'), 'w')
     done = False
     dataPath = "Result_" + vidName
     resultVideoWriter = create_result_videowriter(dataPath)
+
+    # number of green and red squares
+    num_smoke = 0
+    num_nonsmoke = 0
 
     while not done:
         ret, curr_frame = video.read()
@@ -131,11 +138,16 @@ def grid_contour(model, video, vidName):
                     if max_index == 1:
                         color = (0, 255, 0)
                         frame_copy = cv2.rectangle(frame_copy, start, end, color, 1)
+                        num_smoke += 1
                     else:
                         color = (0, 0, 255)
                         frame_copy = cv2.rectangle(frame_copy, start, end, color, 1)
+                        num_nonsmoke += 1
                     cv2.imshow("CurrentFrame", frame_copy)
             resultVideoWriter.write(frame_copy)
+    # write number of smoke and nonsmoke squares to file
+    data_output.write(str(num_smoke))
+    data_output.write(str(num_nonsmoke)) 
 
 if __name__ == '__main__':
     training_data = []
