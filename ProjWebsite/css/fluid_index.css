@@ -33,7 +33,7 @@ header > img {
 /* ---------------- Navigation Stuffs ---------------- */
 /* --------------------------------------------------- */
 nav {
-	position: sticky;
+  position: sticky;
 	top: 0;
 	padding: 0;
 	height: 15vh;
@@ -154,15 +154,33 @@ main > section {
 
 /* Media query for Mobile devices*/
 @media only screen and (min-width : 285px) and (max-width : 480px) {
-
+  header {
+		height: 60vh;
+	}
+	nav {
+		position: static;
+		height: 40vh;
+	}
+	nav > ul > li {
+		flex-basis: 100%;
+	}
 }
 
 /* Media Query for Tablets */
 @media only screen and (min-width : 481px) and (max-width : 1024px) {
+  header {
+		height: 60vh;
+	}
+	nav {
+		position: static;
+		height: 40vh;
+	}
+	nav > ul > li {
+		flex-basis: 100%;
+	}
 }
 
 /* Desktops and laptops  */
 @media only screen and (min-width:1025px) {
-	
 
 }
