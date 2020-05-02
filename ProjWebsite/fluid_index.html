@@ -33,52 +33,112 @@
 <main> 
 	<!-- About Us Section -->
 	<section id="about">
-		<h2>About Team #24's Project</h2>
-		<p>	The project we have decided to pursue is a Wildfire Smoke Detection application. This project is intended to be used by first responders and homeowners in rural areas of California. We have a dataset of over 900 video files for which we will use to train a neural network to identify the presence of smoke and offer a prediction on its density as well. Ideally, we want to make this network minimize false positives and maximize true negatives. We plan on combining many different topics of Computer Science during the development of this project. This includes Machine Learning, Databases, Application Development, and Big Data. Furthermore, we will develop an application to allow a user to record and submit their own video to our trained model and receive the models feedback in real-time. For this project, we have spent time researching smoke detection, performing stakeholder interviews, and defining requirements for the project. During our research, we discovered a few similar projects to our idea where they detect the presence of smoke, each pursuing a different approach. Also coming out of the research stage of our project, we discovered a few websites discussing how to use the tools that we plan on utilizing, PySpark and TensorFlow. </p>
-		
-		<article id="zach">
+    <h2><b>About Team #24's Project</b></h2> 
+    <article id="zach">
 			<img src="img/smoke_alarm1.jpg" alt="zach"/>
 			<h2>Zachary Black</h2>
-			<p>	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque ornare aenean euismod elementum nisi quis eleifend. Malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Sagittis nisl 	  rhoncus mattis rhoncus urna neque. Ligula ullamcorper malesuada proin libero nunc consequat interdum.</p>
 		</article>
 		<article id="gabe">
-			<img src="img/smoke_alarm2.jpg" alt="gabe"/>
+			<img src="img/gabe.jpg" alt="gabe"/>
 			<h2>Gabriel Petersen</h2>
-			<p>	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque ornare aenean euismod elementum nisi quis eleifend. Malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Sagittis nisl 	  rhoncus mattis rhoncus urna neque. Ligula ullamcorper malesuada proin libero nunc consequat interdum.</p>
 		</article>
 		<article id="will">
 			<img src="img/smoke_alarm3.jfif" alt="will"/>
 			<h2>William Williams</h2>
-			<p>	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque ornare aenean euismod elementum nisi quis eleifend. Malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Sagittis nisl 	  rhoncus mattis rhoncus urna neque. Ligula ullamcorper malesuada proin libero nunc consequat interdum.</p>
-		</article>
-		
-		<p> Pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Posuere lorem ipsum dolor sit amet consectetur adipiscing elit duis. Tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce. Eget arcu dictum varius duis at consectetur lorem donec. Convallis aenean et tortor at. Nibh tellus molestie nunc non blandit massa enim nec dui. Velit sed ullamcorper morbi tincidunt. Mauris pellentesque pulvinar pellentesque habitant. Egestas dui id ornare arcu. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Fermentum iaculis eu non diam. Nisi lacus sed viverra tellus in hac. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Dui sapien eget mi proin sed libero enim sed faucibus. Lectus vestibulum mattis ullamcorper velit sed ullamcorper.</p>
-	</section>
+    </article>
+
+		<p>Welcome! We are Team 24 and this is our capstone project. We have done a research study into how smoke can be detected using machine learning. We used 900 recordings of wildfire smoke from the <i>AlertWildfire</i> camera network and created training data from them to plug into a Convolutional Neural Network (CNN). Training and testing a CNN built off this data, it analyzes regions of pixels in video frames to try and learn the features of wildfire smoke. To demonstrate the project, we can submit a video to the CNN model via a desktop application. The output from the application displays a color coded grid emplaced on top of the video signifying areas of the frames that the CNN determines to contain smoke. The video below explains our project in greater detail, and provides a demo of how videos can be tested using our application.</p>
+    
+    <iframe src="https://www.youtube.com/embed/qgRVVksPQ1U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <p>The overarching goal of our project is to detect wildfire smoke and hence wildfires faster and more efficiently than conventional means. Although our model cannot be implemented due to the lack of complete accuracy, we hope our research and labeled data will help those in the future in trying to solve the problem of wildfire smoke detection. Our team hopes especially it can help benefit our advisors - who proposed this idea to us and helped guide us throughout the project. See resources section for links to Dr. Feng Yan's, Dr. Lei Yang's, and Heyang Qin's webpages.</p>
+    
+  </section>
 	<!-- Dated articles on team progress -->
 	<section id="progress">
-	<h2>Project Progress Timeline</h2>
-		<!-- website completion -->
-		<h4 class="entryDate"><i>5 . 23 . 1998</i></h4>
+    <h2><b>Project Progress Timeline</b></h2>
+
+    <h4 class="entryDate"><i>4 . 25 . 2020</i></h4>
+    <article>
+        <h4>Progress Demo</h4>
+        <p>Wrapping up our project, the team has displayed a final demo to the instructors and class. This included a fully functional desktop application where users can upload videos and generate test reports by running it against the CNN. </p>
+    </article>
+
+    <h4 class="entryDate"><i>3 . 23 . 2020</i></h4>
+    <article>
+        <h4>Progress Demo</h4>
+        <p>At this point, the team was tasked to show a working demo displaying the yearly progress to the class. We demonstrated our data labeled, our refinement of our CNN, and our continued development of our user application. We have also created a project poster, project video, and this website to showcase our project.</p>
+    </article>
+
+    <h4 class="entryDate"><i>3 . 23 . 2020</i></h4>
+    <article>
+        <h4>Progress Demo</h4>
+        <p>At this point, the team was tasked to show a working demo displaying the yearly progress to the class. We demonstrated our data labeled, our refinement of our CNN, and our continued development of our user application.</p>
+    </article>
+
+    <h4 class="entryDate"><i>3 . 13 . 2020</i></h4>
+    <article>
+        <h4>User Stories and Testing Plan</h4>
+        <p>At this stage our team was tasked to create user storeis, acceptence criteria, and a testing plan for our project. This point in the project, we have labled all 900 videos for training data. We also created our first Convolutional Neural Network (CNN) in Keras to try and predict smoke within the video frames. The user application prototype was also developed to work as a desktop application with some added features. </p>
+    </article>
+
+    <h4 class="entryDate"><i>2 . 25 . 2020</i></h4>
+    <article>
+        <h4>Revised Spec</h4>
+        <p>We revised our team's functional requirements, use cases, overall design, and UI design to be more realistic and fitting to the end goal. Our team also designed Frame Extractor program to grab 5 frames from each video evenly throughout, and then hash that data for input into the grid label program. Our team also decided to not use any computer-vision preprocessed data due to fear of any crucial feature loss.</p>
+    </article>
+
+    <h4 class="entryDate"><i>2 . 7 . 2020</i></h4>
+    <article>
+        <h4>Revised Concept</h4>
+        <p>Over the winter break, the team experimented with multiple computer vision methods to preprocess data. At this stage, we realized that it would be out of our current work abilities to construct a model that predicts smoke density, so we decided to construct a model that attempts to detect smoke first. Our also team developed a program to label regions of the video frames in an overlaying 16x9 grid. This outputs 120x120px images for the machine learning model to process as training data.</p>
+    </article>
+
+    <h4 class="entryDate"><i>12 . 12 . 2019</i></h4>
+    <article>
+        <h4>Project Prototype</h4>
+        <p>Near the end of the semester, we were tasked to prototype our project to the instructors. For the prototype, we took our previous prototype UI and updated it for mobile use. In our demo, we also presented a video database and a program to conduct some video frame preprocessing.</p>
+    </article>
+
+    <h4 class="entryDate"><i>12 . 12 . 2019</i></h4>
+    <article>
+        <h4>Project Prototype</h4>
+        <p>Near the end of the semester, we were tasked to prototype our project to the instructors. For the prototype, we took our previous prototype UI and updated it for mobile use. In our demo, we also presented a video database and a program to conduct some video frame preprocessing.</p>
+    </article>
+  
+		<h4 class="entryDate"><i>11 . 18 . 2019</i></h4>
 		<article>
-    		<h4>Added Blah blah blah functionality </h4>
-			<p> Pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Posuere lorem ipsum dolor sit amet consectetur adipiscing elit duis. Tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce. Eget arcu dictum varius duis at consectetur lorem donec. Convallis aenean et tortor at. Nibh tellus molestie nunc non blandit massa enim nec dui. Velit sed ullamcorper morbi tincidunt. Mauris pellentesque pulvinar pellentesque habitant. Egestas dui id ornare arcu. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Fermentum iaculis eu non diam. Nisi lacus sed viverra tellus in hac. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Dui sapien eget mi proin sed libero enim sed faucibus. Lectus vestibulum mattis ullamcorper velit sed ullamcorper.</p>
+        <h4>UI and Project Structure Design</h4>
+        <p>At this stage, our team has designed a prototype UI where the future machine learning model will be implemented into. We have also focused on updating our detailed design on how we want the overall project to function.</p>
 		</article>
 	
-		<!-- Created data-labeling program -->
-		<h4 class="entryDate"><i>3 . 4 . 1998</i></h4>
+		<h4 class="entryDate"><i>11 . 1 . 2019</i></h4>
 		<article>
-   			<h4>Changed this that and the other thingy</h4>
-			<p>	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque ornare aenean euismod elementum nisi quis eleifend. Malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Sagittis nisl 	  rhoncus mattis rhoncus urna neque. Ligula ullamcorper malesuada proin libero nunc consequat interdum. Tortor pretium viverra suspendisse potenti nullam ac tortor. Tortor condimentum lacinia quis vel eros. Venenatis lectus magna fringilla urna porttitor rhoncus     dolor purus. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Ultricies mi quis hendrerit dolor. Neque volutpat ac tincidunt vitae. Nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc. Egestas maecenas pharetra     	convallis posuere morbi leo. In vitae turpis massa sed elementum tempus egestas. Rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Morbi non arcu risus quis varius quam quisque id. Convallis posuere morbi leo urna molestie at. </p>
+   		<h4>Stakeholder Interviews, Functional Requirements, and Use Cases</h4>
+			<p>To gain a better insight into how our project is viewed from different points of view, we interviewed stakeholders to get more information on how our project could affect them. We also modeled our functional requirements and use cases for better efficiency. Detailing our functional and non-functional requirements will not only help our team break down development into a series of easy steps, but it also gives priority to certain requirements over others and defines our core functionality. The Use Case modeling helps us maintain a standard of our goals related to how the project will end up, and it will help our team keep focused on our primary requirements.</p>
+    </article>
+    
+		<h4 class="entryDate"><i>10 . 11 . 2019</i></h4>
+		<article>
+   		<h4>Project Concept</h4>
+			<p>The original description of the project that included a variety of ideas to accomplish in the project scope. The main ideas brainstormed were detecting smoke density within a video frame, predicting where the smoke is coming from geographically, and integrating this into a large camera network. These ideas related to Machine Learning, Big Data Frameworks, and Internet of Things (IoT). </p>
 		</article>
 	</section>
 	<!-- Resources -->
 	<section id="resources">
-	<h2>Resources</h2>
-		<p>	Our faculty advisors are the professors Dr. Feng and Dr. Lei, as well as PhD candidate Heyang Qin. </p>
-		
-		<p> 	This manual will be one of our main tools of reference when we begin to implement machine learning models. This is an extensive library with documentation on many different types of decision trees, deep learning, and convolutional neural networks. https://www.tensorflow.org/api_docs/python </p>
-		
-		<p>	The following manual will also be useful if its determined that the amount of data to be processed is too much for conventional means and requires the use of a big data framework. The framework we believe will be used if a scenario arises will be PySpark. https://spark.apache.org/docs/latest/api/python/index.html </p>
+	  <h2><b>Resources</b></h2>
+	
+    <p> AlertWildfire. (2020). Network Map. <a href="http://www.alertwildfire.org/">http://www.alertwildfire.org/</a></p>
+
+    <p> Çetin, A. Enis, et al. (2016). Methods and Techniques for Fire Detection: Signal, Image and Video Processing Perspectives. Elsevier Science</p>
+      
+    <p>Insurance Information Institute. (2019). Facts + Statistics: Wildfires.. <a href="https://www.iii.org/fact-statistic/facts-statistics-wildfires">https://www.iii.org/fact-statistic/facts-statistics-wildfires</a></p>
+      
+    <p>The Nevada Seismological Laboratory. (2020). <a href="http://www.seismo.unr.edu/">http://www.seismo.unr.edu/</a></p>
+    
+    <p> This manual will be one of our main tools of reference when we begin to implement machine learning models. This is an extensive library with documentation on many different types of decision trees, deep learning, and convolutional neural networks. https://www.tensorflow.org/api_docs/python </p>
+    
+    <p>	A big thank you goes out to our advisors <a href="https://www.unr.edu/cse/people/feng-yan">Dr. Feng Yan </a>, <a href="https://www.unr.edu/cse/people/lei-yang">Dr. Lei Yang</a>, and PhD candidate <a href="https://www.cse.unr.edu/~heyangq/">Heyang Qin</a> for helping us with our project </p>
 	</section>
 </main>
 <footer>

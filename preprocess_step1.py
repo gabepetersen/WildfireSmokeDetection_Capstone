@@ -44,8 +44,6 @@ def preproc(vidcap, fps, width, height, videoCount):
                 # elementary solution for image denoize - DOESNT WORK ATM
                 # frame_v2 = cv2.fastNlMeansDenoisingColored(frame, None, 10, 10, 7, 21)
                 #
-                # add the frame to the output video
-                # THIS DOESNT WORK WHEN CAPTURE FRAME IS SHRUNK TO ANOTHER SIZE
                 #
 
                 # shrink video
