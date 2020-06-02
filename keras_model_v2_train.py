@@ -1,7 +1,7 @@
-# model_gabe.py
+# keras_model_v2_train.py
 # 14 Apr 2020
 # implement with recent version of keras and tensorflow
-# code is mostly from: https://www.geeksforgeeks.org/python-image-classification-using-keras/
+# code is referenced from: https://www.geeksforgeeks.org/python-image-classification-using-keras/
 
 import cv2
 import numpy as np
@@ -44,6 +44,10 @@ if __name__ == '__main__':
   epochs = 50
   batch_size = 32
   
+  # Since this file is mainly for experimentaion purposes, we wanted to make
+  # the model easy to create and understand, so most of the code is referenced
+  # from the code at the link below
+  # https://www.geeksforgeeks.org/python-image-classification-using-keras/
   if K.image_data_format() == 'channels_first': 
     input_shape = (3, img_width, img_height) 
   else: 
@@ -84,15 +88,18 @@ if __name__ == '__main__':
   
   test_datagen = ImageDataGenerator(rescale = 1. / 255) 
   
+  # get data from training directory
   train_generator = train_datagen.flow_from_directory(train_data_dir, 
                         target_size =(img_width, img_height), 
                         batch_size = batch_size, class_mode ='binary') 
   
+  # get data from validation directory
   validation_generator = test_datagen.flow_from_directory( 
                                     validation_data_dir, 
                                     target_size =(img_width, img_height), 
                                     batch_size = batch_size, class_mode ='binary') 
   
+  # train up the model given the epochs
   history = model.fit_generator(train_generator, 
     steps_per_epoch = nb_train_samples // batch_size, 
     epochs = epochs, validation_data = validation_generator, 

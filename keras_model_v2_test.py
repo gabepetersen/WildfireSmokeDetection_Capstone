@@ -1,6 +1,7 @@
-# model_gabe_test.py
+# keras_model_v2_test.py
 # 14 Apr 2020
 # Test the model that is trained seperately
+# code is referenced from: https://www.geeksforgeeks.org/python-image-classification-using-keras/
 
 ##
 ##  TO RUN:
@@ -37,7 +38,7 @@ def read_video(filename):
         # return video
         return video
 
-# ------ from model.py ---------
+# ------ referenced from model.py ---------
 # iterate through frames of a video and call model.predict on each cell in a 16x9 grid
 # if smoke is identified then draw a green box on the cell, else draw red box
 # @params:
